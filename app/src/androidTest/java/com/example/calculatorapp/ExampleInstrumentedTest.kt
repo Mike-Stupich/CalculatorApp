@@ -1,4 +1,4 @@
-package com.example.firstapp
+package com.example.calculatorapp
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
