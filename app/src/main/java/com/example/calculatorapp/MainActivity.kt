@@ -3,8 +3,10 @@ package com.example.calculatorapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
-
 class MainActivity : AppCompatActivity() {
+    private var clearRes = false
+    private var clearHist = false
+    private var firstUse = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -13,8 +15,11 @@ class MainActivity : AppCompatActivity() {
         var lastVal = "0"
 
         btnEquals.setOnClickListener{
+            addToHistory(tvResult.text.toString())
             val result = getResult(tvResult.text.toString().trim(), lastVal, lastOp)
             tvResult.text = result
+            clearRes = true
+            clearHist = true
         }
         btn0.setOnClickListener{
             tvResult.text = numberInput(tvResult.text.toString(), '0')
@@ -67,22 +72,25 @@ class MainActivity : AppCompatActivity() {
             lastVal = tvResult.text.toString().trim()
             lastOp = '+'
             tvResult.text = "0"
+            addToHistory(lastVal, lastOp)
         }
         btnMinus.setOnClickListener{
             lastVal = tvResult.text.toString().trim()
             lastOp = '-'
             tvResult.text = "0"
+            addToHistory(lastVal, lastOp)
         }
         btnDiv.setOnClickListener{
             lastVal = tvResult.text.toString().trim()
             lastOp = '/'
             tvResult.text = "0"
+            addToHistory(lastVal, lastOp)
         }
         btnMul.setOnClickListener{
             lastVal = tvResult.text.toString().trim()
             lastOp = '*'
             tvResult.text = "0"
-
+            addToHistory(lastVal, lastOp)
         }
         btnNeg.setOnClickListener {
             if (tvResult.text.startsWith('-')) {
@@ -91,27 +99,45 @@ class MainActivity : AppCompatActivity() {
                 tvResult.text = String.format("%c%s", '-', tvResult.text.toString())
             }
         }
+
+        btnDel.setOnClickListener{
+            if (tvResult.text.isNotEmpty()) {
+                tvResult.text = tvResult.text.toString().dropLast(1)
+            }
+        }
     }
 
-    private fun addToHistory(oldHist: String, value: String, op: String) {
-
+    private fun addToHistory(value: String, op: Char = '~') {
+        var oldHist = tvHistory.text.toString().trim()
+        if (clearHist) {
+            oldHist = ""
+            clearHist = false
+        }
+        if (op == '~') {
+            tvHistory.text = String.format("%s%s", oldHist, value)
+        } else {
+            tvHistory.text = String.format("%s%s%s", oldHist, value, op)
+        }
     }
 
     private fun getResult(toCompute: String, lastVal: String, lastOp: Char) : String {
         var retVal ="ERROR"
         if (lastOp == '~') { return toCompute }
         when(lastOp) {
-            '+' -> retVal = (lastVal.toDouble() + toCompute.toDouble()).toString()
-            '-' -> retVal = (lastVal.toDouble() - toCompute.toDouble()).toString()
-            '*' -> retVal = (lastVal.toDouble() * toCompute.toDouble()).toString()
-            '/' -> retVal = (lastVal.toDouble() / toCompute.toDouble()).toString()
+            '+' -> retVal = (lastVal.toDouble().plus(toCompute.toDouble())).toString()
+            '-' -> retVal = (lastVal.toDouble().minus(toCompute.toDouble())).toString()
+            '*' -> retVal = (lastVal.toDouble().times(toCompute.toDouble())).toString()
+            '/' -> retVal = (lastVal.toDouble().div(toCompute.toDouble())).toString()
         }
-        retVal = retVal.removeSuffix(".0")
-        return retVal
+        return retVal.removeSuffix(".0")
     }
 
     private fun numberInput(oldNum: String, numToAdd: Char): String {
-        if (oldNum == "0") { return numToAdd.toString() }
+        if (firstUse || clearRes || oldNum == "0") {
+            clearRes = false
+            firstUse = false
+            return numToAdd.toString()
+        }
         return String.format("%s%s", oldNum, numToAdd)
     }
 
