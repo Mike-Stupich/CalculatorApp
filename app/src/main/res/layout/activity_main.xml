@@ -8,14 +8,18 @@
         android:orientation="vertical"
         tools:context=".MainActivity"
         android:background="@color/colorPrimaryLight">
-    <EditText
+    <TextView
             android:layout_width="match_parent"
-            android:layout_height="123dp"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/etResult" android:layout_marginLeft="20dp" android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp" android:importantForAutofill="no" android:textAlignment="textEnd"
-            android:textSize="24sp"/>
+            android:layout_height="wrap_content" android:id="@+id/tvHistory" android:textSize="18sp"
+            android:textStyle="bold" android:layout_marginTop="20dp" android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp" android:gravity="end"/>
+    <TextView
+            android:text="@string/_0"
+            android:layout_width="match_parent"
+            android:layout_height="153dp" android:id="@+id/tvResult" android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp" android:layout_marginRight="20dp" android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="end|center_vertical"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -24,26 +28,26 @@
         <Button
                 android:text="@string/clear_error"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btnCE" android:layout_weight="1"
                 android:backgroundTint="@color/colorPrimaryDark" android:textColor="#FFFFFF"
                 tools:ignore="ButtonStyle"/>
         <Button
                 android:text="@string/clear"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button2" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btnC" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"
                 tools:ignore="ButtonStyle"/>
         <Button
                 android:text="@string/del"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/btn13" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btnDel" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
         <Button
                 android:text="@string/divide"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button4" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btnDiv" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
     </LinearLayout>
     <LinearLayout
@@ -55,25 +59,25 @@
                 android:text="@string/_7"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button5" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btn7" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
         <Button
                 android:text="@string/_8"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button6" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btn8" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
         <Button
                 android:text="@string/_9"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button7" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btn9" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
         <Button
                 android:text="@string/multiply"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button8" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btnMul" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
     </LinearLayout>
     <LinearLayout
@@ -85,25 +89,25 @@
                 android:text="@string/_4"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button11" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btn4" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
         <Button
                 android:text="@string/_5"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button12" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btn5" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
         <Button
                 android:text="@string/_6"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button14" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btn6" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
         <Button
                 android:text="@string/minus"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button13" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btnMinus" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
     </LinearLayout>
     <LinearLayout
@@ -115,25 +119,25 @@
                 android:text="@string/_1"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button15" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btn1" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
         <Button
                 android:text="@string/_2"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button16" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btn2" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
         <Button
                 android:text="@string/_3"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button17" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btn3" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
         <Button
                 android:text="@string/plus"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button18" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btnPlus" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
     </LinearLayout>
     <LinearLayout
@@ -145,25 +149,25 @@
                 android:text="@string/negative"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button19" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btnNeg" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
         <Button
                 android:text="@string/_0"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button20" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btn0" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
         <Button
                 android:text="@string/decimal"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button21" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btnDecimal" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
         <Button
                 android:text="@string/equals"
                 tools:ignore="ButtonStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button22" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/btnEquals" android:layout_weight="1"
                 android:textColor="#FFFFFF" android:backgroundTint="@color/colorPrimaryDark"/>
     </LinearLayout>
 </LinearLayout>
